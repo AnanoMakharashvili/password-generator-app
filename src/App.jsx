@@ -94,21 +94,18 @@ function Main() {
 }
 
 function ColorBoxes() {
-  const boxes = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
-
-  const colors = ["bg-red-500", "bg-green-500", "bg-blue-500", "bg-yellow-500"];
+  const boxes = [
+    { id: 1, color: "bg-red-500" },
+    { id: 2, color: "bg-orange-500" },
+    { id: 3, color: "bg-yellow-500" },
+    { id: 4, color: "bg-green-500" },
+  ];
 
   return (
     <div className="flex gap-4 p-4 flex-wrap">
-      {boxes.map((box, index) => (
-        <div
-          key={box.id}
-          className={`w-16 h-16 rounded-lg ${colors[index]}`}
-        ></div>
+      {boxes.map((box) => (
+        <div key={box.id} className={`w-16 h-16 rounded-lg ${box.color}`}></div>
       ))}
-
-      <div className="w-16 h-16 rounded-lg bg-green-500"></div>
-      <div className="w-16 h-16 rounded-lg bg-primary"></div>
     </div>
   );
 }
