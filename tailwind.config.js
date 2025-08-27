@@ -5,10 +5,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"JetBrains Mono"', "monospace"],
-        colors: {
-          primary: "#A4FFAF",
-          secondary: "#24232C",
-        },
+      },
+      colors: {
+        primary: "#A4FFAF",
+        secondary: "#24232C",
       },
     },
   },
