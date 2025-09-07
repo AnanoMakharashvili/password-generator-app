@@ -17,7 +17,7 @@ function Main() {
   const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lowerChars = "abcdefghijklmnopqrstuvwxyz";
   const numberChars = "0123456789";
-  const symbolChars = "!@#$%^&*()_+[]{}<>?,.";
+  const symbolChars = "!@#$%^&*()_+[]{}<>?,";
 
   const generatePassword = () => {
     let chars = "";
@@ -83,14 +83,15 @@ function Main() {
       <header className="flex items-center justify-center text-[#817D92] text-[16px] font-bold font-['JetBrains-Mono'] transform translate-x-[10px] translate-y-[-29px]">
         Password Generator
       </header>
-      <div className="flex flex-col items-center  bg-[#24232C] p-[8px] text-[24px]">
-        <div className="flex justify-around items-center gap-[150px]">
-          <span>{password || "YourPassword"}</span>
+
+      <div className="flex flex-col items-center bg-[#24232C] p-[8px] text-[24px]">
+        <div className="flex justify-between items-center w-full px-4">
+          <span className="break-all">{password || "YourPassword"}</span>
           <img className="icon" src={Icon} alt="icon" />
         </div>
       </div>
 
-      <div className="container flex flex-col item-center  bg-[#24232C] mt-[25px] p-[6px] gap-[30px]">
+      <div className="container flex flex-col item-center bg-[#24232C] mt-[25px] p-[6px] gap-[30px]">
         <div className="flex flex-col items-center gap-[22px] ">
           <div className="flex flex-row items-center gap-[128px]">
             <span className="text-[#E6E5EA] ">Character Length</span>
@@ -172,15 +173,15 @@ function Main() {
           </div>
         </div>
 
-        <div>
+        <div className="relative">
           <button
             onClick={generatePassword}
-            className="px-[131px] py-[13px] bg-[#a4ffaf] text-[#24232c]  font-bold text-[18px] leading-[100%] tracking-[0px"
+            className="w-full py-[13px] bg-[#a4ffaf] text-[#24232c] font-bold text-[18px] leading-[100%]"
           >
             GENERATE
           </button>
           <img
-            className="translate-x-[-119px] translate-y-[0px]"
+            className="absolute right-[20px] top-1/2 -translate-y-1/2"
             src={Arrow}
             alt="arrow"
           />
