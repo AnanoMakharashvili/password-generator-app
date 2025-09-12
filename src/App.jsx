@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Icon from "./assets/icon-copy.svg";
 import Arrow from "./assets/icon-arrow-right.svg";
@@ -19,6 +19,20 @@ function Main() {
   const numberChars = "0123456789";
   const symbolChars = "!@#$%^&*()_+[]{}<>?,";
 
+  useEffect(() => {
+    const selected = [
+      includeUpper,
+      includeLower,
+      includeNumbers,
+      includeSymbols,
+    ].filter(Boolean).length;
+
+    if (selected <= 1) setStrength("TOO WEAK");
+    else if (selected === 2) setStrength("WEAK");
+    else if (selected === 3) setStrength("MEDIUM");
+    else if (selected === 4) setStrength("STRONG");
+  }, [includeUpper, includeLower, includeNumbers, includeSymbols]);
+
   const generatePassword = () => {
     let chars = "";
     if (includeUpper) chars += upperChars;
@@ -38,22 +52,6 @@ function Main() {
       generated += chars[randomIndex];
     }
     setPassword(generated);
-    updateStrength(generated);
-  };
-
-  const updateStrength = (pwd) => {
-    let score = 0;
-    if (pwd.length >= 6) score++;
-    if (pwd.length >= 10) score++;
-    if (/[A-Z]/.test(pwd)) score++;
-    if (/[a-z]/.test(pwd)) score++;
-    if (/[0-9]/.test(pwd)) score++;
-    if (/[^A-Za-z0-9]/.test(pwd)) score++;
-
-    if (score <= 2) setStrength("TOO WEAK");
-    else if (score <= 3) setStrength("WEAK");
-    else if (score <= 4) setStrength("MEDIUM");
-    else setStrength("STRONG");
   };
 
   const getBars = () => {
